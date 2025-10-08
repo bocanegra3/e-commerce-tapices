@@ -1,0 +1,9 @@
+.nav-container{
+    background-color: black;
+}
+.nav-a{
+    padding: 1rem;
+    color:rgb(4, 167, 39);
+    font-size: 1rem;
+    text-decoration: none;
+}
