@@ -10,7 +10,7 @@ function App() {
   return (
     <>
     <NavbarBS/>
-    <ItemListContainer saludo = 'Bienvenido a mi app'/>
+    <ItemListContainer saludo = 'Bienvenidos a Tapices "Grafica Intuitiva"'/>
      </>
   )
 }
