@@ -1,8 +1,31 @@
+import { useEffect, useState } from "react"
+import { getProductos } from "../mock/AsyncService"
+import ItemList from "./ItemList"
+import { useParams } from "react-router-dom"
+
 const ItemListContainer = (props)=>{
+    const[data, setData]=useState([])
+    const {type}= useParams()
+
+    useEffect(()=>{        
+        getProductos()        
+        .then((res)=> {
+            if(type){
+                setData(res.filter((prod)=> prod.category === type))
+            }else{
+                setData(res)
+            }
+        })
+        .catch((erorr)=> console.log(error))
+    },[type])
+    console.log(data,'estado')
     return(
-        <h1 className="p-3 text-primary-emphasis $blue-200 border border-primary-subtle rounded-3" style = {{textAlign:'center'}} >{props.saludo}</h1>
-        
+        <div>
+        <h1 style = {{textAlign:'center', background:'black', color: 'white', padding: '1rem'}} >{props.saludo}{type && <span>{type}</span>}</h1>
+        <ItemList data={data} /> 
+        </div>
     )
 }
+
 
 export default ItemListContainer
