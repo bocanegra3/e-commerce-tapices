@@ -5,6 +5,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Error from "./components/Error";
+import { CartProvider } from './context/CartContext';
 
 
 
@@ -15,15 +16,15 @@ function App() {
 
   return (
     <BrowserRouter>
-
-    <NavbarBS/>
+    <CartProvider>
+    <NavbarBS/>     
     <Routes>
       <Route path="/" element={<ItemListContainer saludo = 'Bienvenidos a TapizArte'/>}/>
       <Route path="/category/:type" element={<ItemListContainer saludo = 'Estos son los tapices: '/>}/>
       <Route path="/item/:id" element={<ItemDetailContainer/>}/>
       <Route path='*' element={<Error/>}/>
     </Routes>
-    
+    </CartProvider>
     
 
      </BrowserRouter>

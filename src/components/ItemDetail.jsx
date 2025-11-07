@@ -3,8 +3,15 @@ import ItemCount from './ItemCount'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import { TbBackground } from 'react-icons/tb';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const IntemDetail = ({detalle}) => {
+  const {cart, addItem} = useContext(CartContext)
+  const onAdd = (cantidad)=>{
+    console.log(`Agregaste ${cantidad} al carrito`)
+    addItem(detalle,cantidad)
+  }
   return (
     
       <Card className="bg-dark text-white " style={{ width: '60%', margin: '1rem 20% 0px' }}>
@@ -16,7 +23,7 @@ const IntemDetail = ({detalle}) => {
         </Card.Text>
         <Card.Text>$ {detalle.price},00</Card.Text>
         <Card.Text>Stock disponible: {detalle.stock}</Card.Text>
-        <ItemCount  stock={detalle.stock}/>
+        <ItemCount  stock={detalle.stock} onAdd={onAdd}/>
       </Card.ImgOverlay>
       
     </Card>

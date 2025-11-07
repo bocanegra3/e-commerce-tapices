@@ -25,8 +25,7 @@ function NavbarBS() {
               <NavDropdown.Divider />
               <NavDropdown.Item as={NavLink} to="/category/En Oferta"   href="#action/3.3">Oferta Especiales</NavDropdown.Item>
               <NavDropdown.Divider />
-            </NavDropdown>
-            <Nav.Link href="#link" style={{color:"#666565ff",fontSize:"0.8rem", display:"flex", alignItems:"center" }}>Contacto</Nav.Link>
+            </NavDropdown>            
           </Nav>
           <CardWidget/>
         </Navbar.Collapse>
