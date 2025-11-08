@@ -4,7 +4,7 @@ import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
 
-cconst ItemListContainer = (props)=>{
+const ItemListContainer = (props)=>{
     const[data, setData]=useState([])
     const [loader, setLoader]= useState(false)
     const {type}= useParams()
