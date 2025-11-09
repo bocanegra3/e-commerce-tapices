@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ItemCount from './ItemCount'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -6,10 +6,13 @@ import { TbBackground } from 'react-icons/tb';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
+
 const IntemDetail = ({detalle}) => {
   const {cart, addItem} = useContext(CartContext)
+  const [purchase, setPurchase]=useState(false)
   const onAdd = (cantidad)=>{
     console.log(`Agregaste ${cantidad} al carrito`)
+    setPurchase(true)
     addItem(detalle,cantidad)
   }
   return (
@@ -23,7 +26,7 @@ const IntemDetail = ({detalle}) => {
         </Card.Text>
         <Card.Text>$ {detalle.price},00</Card.Text>
         <Card.Text>Stock disponible: {detalle.stock}</Card.Text>
-        <ItemCount  stock={detalle.stock} onAdd={onAdd}/>
+        {purchase ? <Link  className='btn btn-dark' to='/cart'>Terminar compra</Link> : <ItemCount  stock={detalle.stock} onAdd={onAdd}/>}
       </Card.ImgOverlay>
       
     </Card>
