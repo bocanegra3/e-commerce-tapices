@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { PiOrangeDuotone } from "react-icons/pi";
 
 //creamos el contexto y lo exportamos para su uso
 export const CartContext = createContext()
@@ -35,9 +36,27 @@ export const CartProvider = ({children}) =>{
         return cart.some((prod)=> prod.id === id)
     }
 
+    const total = ()=>{
+        return cart.reduce((acc, prod)=>acc += (prod.quantity * prod.price),0)
+    }
+
+    const cartQuantity = ()=> {
+        return cart.reduce ((acc, prod)=>acc += prod.quantity, 0)
+    }
+
+     const itemQuantity = (id)=>{
+        const itemCart = cart.find((prod)=> prod.id === id)
+
+       if(itemCart){
+        return itemCart.quantity
+    }else{
+        //no existe
+        return 0
+    }
+    }
     //en el provedor vamos a tener todas las funcionalidades que modifiquen el carrito
     return(
-      <CartContext.Provider value ={{cart, addItem, removeItem, clear}}>
+      <CartContext.Provider value ={{cart, addItem, removeItem, clear, total, cartQuantity, itemQuantity}}>
         {children}
       </CartContext.Provider>  
     )

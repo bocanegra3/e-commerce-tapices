@@ -5,11 +5,11 @@ import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
 const CartWidget = () => {
-    const {cart} = useContext(CartContext)
+    const {cart, cartQuantity}= useContext(CartContext)
     return(
         <div>
             <span><a className="nav-a" href="">Ver <IoIosCart style={{fontSize:"2rem", color:"white"}}/> </a>     </span>
-            <span style={{background:'green',padding:'4.5px', borderRadius:'0.3rem',color:'white'}}>5</span>
+            {cart.length > 0 && <span style={{background:'green',padding:'4.5px', borderRadius:'0.3rem',color:'white'}}>{cartQuantity()}</span>}
         </div>
     )
 }

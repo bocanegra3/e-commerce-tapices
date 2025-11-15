@@ -6,7 +6,7 @@ const EmptyCart = () => {
     <div>
         <h1>Tu carrito esta vacio! 😱</h1>
         <h3> Te invitamos a ver nuestras ofertas</h3>
-        <Link className='btn btn-dark' to='/category/ofertas'>Ir a ofertas</Link>
+        <Link className='btn btn-dark' to='/category/En Oferta'>Ir a ofertas</Link>
     </div>
   )
 }
