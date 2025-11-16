@@ -8,7 +8,7 @@ const CartWidget = () => {
     const {cart, cartQuantity}= useContext(CartContext)
     return(
         <div>
-            <span><a className="nav-a" href="">Ver <IoIosCart style={{fontSize:"2rem", color:"white"}}/> </a>     </span>
+            <span><a className="nav-a"><IoIosCart style={{fontSize:"2rem", color:"white"}}/> </a>     </span>
             {cart.length > 0 && <span style={{background:'green',padding:'4.5px', borderRadius:'0.3rem',color:'white'}}>{cartQuantity()}</span>}
         </div>
     )

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getProductos } from "../mock/AsyncService"
+import { getProductos, productos } from "../mock/AsyncService"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
-import { collection, getDocs, where, query } from "firebase/firestore"
+import { collection, getDocs, where, query, addDoc } from "firebase/firestore"
 import { db } from "../service/firebase"
 
 const ItemListContainer = (props)=>{
@@ -31,24 +31,11 @@ const ItemListContainer = (props)=>{
         })
         .catch((error)=> console.log(error))
         .finally(()=>setLoader(false))
-    },[type])
-/*     useEffect(()=>{
-        setLoader(true)
-        getProductos()
-        .then((res)=>{
-            if(type){
-                setData(res.filter((prod)=> prod.category === type))
-            }else{
-                setData(res)
-            }
-        })
-        .catch((error)=> console.log(error))
-        .finally(()=> setLoader(false))
-    },[type]) */
+    },[type])    
 
-    console.log(data, 'estado')
     return(
             <>
+
         {
             loader 
             ? <LoaderComponent/>

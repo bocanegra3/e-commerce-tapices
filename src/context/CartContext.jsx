@@ -24,6 +24,9 @@ export const CartProvider = ({children}) =>{
         }
         
     }
+        const removeList = () => {	//implementa la funcionalidad para dejar el carrito vacío
+        setCart([])
+    }
 
     const removeItem = (id) => {
         setCart(cart.filter((prod)=> prod.id !== id))
@@ -56,7 +59,7 @@ export const CartProvider = ({children}) =>{
     }
     //en el provedor vamos a tener todas las funcionalidades que modifiquen el carrito
     return(
-      <CartContext.Provider value ={{cart, addItem, removeItem, clear, total, cartQuantity, itemQuantity}}>
+      <CartContext.Provider value ={{cart, addItem, removeItem,removeList, clear, total, cartQuantity, itemQuantity}}>
         {children}
       </CartContext.Provider>  
     )

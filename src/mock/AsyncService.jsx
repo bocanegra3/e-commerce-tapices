@@ -1,4 +1,4 @@
-const productos = [
+export const productos = [
 /*     {
         id: '',
         name: '',
@@ -8,7 +8,7 @@ const productos = [
         img: '',
         category:'',
     } */
-        {
+/*         {
         id: '01',
         name: 'Cristales Internos',
         description: 'El verdadero tesoro esta en uno.',
@@ -17,9 +17,9 @@ const productos = [
         img: '../img/tapiz0b.png',
         imgDetail: '../img/tapiz0c.png',
         category:'Nuevos',
-    },
+    }, */
         {
-        id: '02',
+/*         id: '02', */
         name: 'Observacion',
         description: 'Mirar hacia el inverior es el primer paso para comenzar a ver.',
         stock: 17,
@@ -29,7 +29,7 @@ const productos = [
         category:'En Oferta',
     },
         {
-        id: '03',
+/*         id: '03', */
         name: 'Esfera',
         description: 'Las formas son solo la perspectiva de donde uno mira.',
         stock: 19,
@@ -39,7 +39,7 @@ const productos = [
         category:'En Oferta',
     },
         {
-        id: '04',
+/*         id: '04', */
         name: 'Frecuencia',
         description: 'Las frecuencias son solo la perspectiva de donde uno es.',
         stock: 20,
@@ -49,7 +49,7 @@ const productos = [
         category:'En Oferta',
     },
             {
-        id: '05',
+/*         id: '05', */
         name: 'Ser intermundo',
         description: 'Entre el cielo y el infierno habitan seres extraordinarios.',
         stock: 18,
@@ -59,7 +59,7 @@ const productos = [
         category:'Nuevos',
     },
             {
-        id: '06',
+//        id: '06',
         name: 'Iluminacion',
         description: 'La iluminacion es solo un estado de claridad.',
         stock: 15,
@@ -69,7 +69,7 @@ const productos = [
         category:'Nuevos',
     },
             {
-        id: '07',
+//       id: '07',
         name: 'Forma',
         description: 'Las formas son solo la perspectiva de donde uno mira.',
         stock: 3,
