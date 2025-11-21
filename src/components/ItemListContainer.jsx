@@ -13,14 +13,14 @@ const ItemListContainer = (props)=>{
 
     useEffect(()=>{
         setLoader(true)
-        //conectarnos con nuestra coleccion
+        
         const productCollection = type 
         ? query(collection(db, "productos"), where ("category","==", type))
          : collection(db, "productos")
-        //pedir los documentos
+       
         getDocs(productCollection)
         .then((res)=>{
-            //limpiar y obtener datos
+        
             const list = res.docs.map((doc)=>{
                 return{
                     id:doc.id,

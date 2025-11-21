@@ -8,13 +8,15 @@ import { CartContext } from '../context/CartContext';
 
 
 const IntemDetail = ({detalle}) => {
-  const {cart, addItem} = useContext(CartContext)
+  const {cart, addItem, itemQuantity} = useContext(CartContext)
   const [purchase, setPurchase]=useState(false)
   const onAdd = (cantidad)=>{
     console.log(`Agregaste ${cantidad} al carrito`)
     setPurchase(true)
     addItem(detalle,cantidad)
   }
+  const stockActualizado = detalle.stock - itemQuantity(detalle.id)
+
   return (
     
       <Card className="bg-dark text-white " style={{ width: '60%', margin: '1rem 20% 0px' }}>
@@ -25,8 +27,8 @@ const IntemDetail = ({detalle}) => {
          {detalle.description}
         </Card.Text>
         <Card.Text>$ {detalle.price},00</Card.Text>
-        <Card.Text>Stock disponible: {detalle.stock}</Card.Text>
-        {purchase ? <Link  className='btn btn-dark' to='/cart'>Terminar compra</Link> : <ItemCount  stock={detalle.stock} onAdd={onAdd}/>}
+        <Card.Text>Stock disponible: {stockActualizado}</Card.Text>
+        {purchase ? <Link  className='btn btn-dark' to='/cart'>Terminar compra</Link> : <ItemCount  stock={stockActualizado} onAdd={onAdd}/>}
       </Card.ImgOverlay>
       
     </Card>

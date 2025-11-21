@@ -1,13 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { PiOrangeDuotone } from "react-icons/pi";
+import Swal from "sweetalert2";
 
-//creamos el contexto y lo exportamos para su uso
 export const CartContext = createContext()
-//creamos a el proovedor
 
-export const CartProvider = ({children}) =>{
-    const [cart, setCart] = useState([])
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
 
+const carritoLS = JSON.parse(localStorage.getItem('carrito')) || []
+export const CartProvider = ({children})=>{
+    const [cart, setCart]=useState(carritoLS)
+
+
+    useEffect(()=>{
+        localStorage.setItem('carrito', JSON.stringify(cart))
+    },[cart])
     const addItem =(item, qty)=>{
         if(isInCart(item.id)){
            setCart(
@@ -24,16 +36,61 @@ export const CartProvider = ({children}) =>{
         }
         
     }
-        const removeList = () => {	//implementa la funcionalidad para dejar el carrito vacío
+        const removeList = () => {	
         setCart([])
     }
 
     const removeItem = (id) => {
-        setCart(cart.filter((prod)=> prod.id !== id))
+        Swal.fire({
+  title: "¿Seguro deseas quitar este producto?",  
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, Deseo quitarlo!"
+}).then((result) => {
+  if (result.isConfirmed) {
+  setCart(cart.filter((prod)=> prod.id !== id))
+    Swal.fire({      
+      title: "Eliminado!",
+      text: "Quitaste el producto del carrito.",
+      icon: "success"
+    });
+  }
+});
+       
+
     }
 
     const clear = () => {
-        setCart([])
+        swalWithBootstrapButtons.fire({
+  title: "Es una buena idea?",
+  text: "Estas a punto de vaciar el carrito!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "si, Quitar todo!",
+  cancelButtonText: "No, cancelar!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    setCart([])
+    swalWithBootstrapButtons.fire({
+      title: "Eliminado!",
+      text: "Tu carrito esta vacio, podes ir a ver nuestros productos.",
+      icon: "success"
+    });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelado",
+      text: "Excelente decisión :)",
+      icon: "error"
+    });
+  }
+});
+
     }
     const isInCart = (id)=> {
         return cart.some((prod)=> prod.id === id)
@@ -48,18 +105,19 @@ export const CartProvider = ({children}) =>{
     }
 
      const itemQuantity = (id)=>{
-        const itemCart = cart.find((prod)=> prod.id === id)
+        const itemInCart = cart.find((prod)=> prod.id === id)
 
-       if(itemCart){
-        return itemCart.quantity
+       if(itemInCart){
+        return itemInCart.quantity
     }else{
-        //no existe
+        
         return 0
     }
     }
-    //en el provedor vamos a tener todas las funcionalidades que modifiquen el carrito
+
+
     return(
-      <CartContext.Provider value ={{cart, addItem, removeItem,removeList, clear, total, cartQuantity, itemQuantity}}>
+      <CartContext.Provider value ={{cart, addItem, removeItem,removeList, clear, total, cartQuantity, itemQuantity, itemQuantity}}>
         {children}
       </CartContext.Provider>  
     )
