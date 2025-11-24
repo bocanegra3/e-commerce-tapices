@@ -21,7 +21,7 @@ function App() {
     <CartProvider>
     <NavbarBS/>     
     <Routes>
-      <Route path="/" element={<ItemListContainer saludo = 'Bienvenidos a TapizArte'/>}/>
+      <Route path="/" element={<ItemListContainer saludo = 'Bienvenidos a Filomena Solar'/>}/>
       <Route path="/category/:type" element={<ItemListContainer saludo = 'Estos son los tapices: '/>}/>
       <Route path="/cart" element={<CartContainer/>}/>
       <Route path="/item/:id" element={<ItemDetailContainer/>}/>
