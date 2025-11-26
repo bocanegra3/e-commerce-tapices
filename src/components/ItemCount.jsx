@@ -33,7 +33,7 @@ const ItemCount = ({stock, onAdd}) => {
     {
       stock > 0 ?
       <>
-    <div>
+    <div className='stockDisponible'>
         <button className='btn btn-danger' onClick={restar} style={{padding:'0.5rem 0.6rem'}} disabled={count === 0}>-</button>
         <span className='btn' style={{color:'#ffffff', padding:'1.8rem'}}>{count}</span>
         <button className='btn btn-success' onClick={sumar} style={{padding:'0.5em'}}>+</button>

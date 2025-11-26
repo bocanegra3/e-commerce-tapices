@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { TbBackground } from 'react-icons/tb';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import '../css/ItemDetail.css';
 
 
 const IntemDetail = ({detalle}) => {
@@ -19,9 +20,9 @@ const IntemDetail = ({detalle}) => {
 
   return (
     
-      <Card className="bg-dark text-white " style={{ width: '60%', margin: '1rem 20% 0px' }}>
-      <Card.Img src={detalle.imgDetail} alt={detalle.name} style={{ paddingLeft: '40%'}} />
-      <Card.ImgOverlay style={{width: '40%'}}>
+      <Card className="bg-dark text-white Cartdetail" >
+      <Card.Img src={detalle.imgDetail} alt={detalle.name} />
+      <Card.ImgOverlay >
         <Card.Title>{detalle.name}</Card.Title>
         <Card.Text>
          {detalle.description}

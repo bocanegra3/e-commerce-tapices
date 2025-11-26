@@ -1,0 +1,24 @@
+/* CARD GENERAL */
+.Cartdetail {
+  width: 60%;;       /* ancho máximo de la card */
+  margin: 1rem 20% 0px;    /* centrada con margen arriba/abajo */
+}
+
+/* Imagen del producto dentro de la card */
+.Cartdetail img {
+  padding-left: 40%;
+}
+/* Versión para pantallas anchas */
+@media (max-width: 600px) {
+  .Cartdetail {   
+    width: 89%;
+    margin: 2rem 5% 0px;
+    height: 30rem;
+  }
+.card-img-overlay{
+    width: 45%;
+}
+.stockDisponible{
+    display: flex;
+}
+}
