@@ -1,4 +1,4 @@
-# Coder Flex App 🛒
+# Filomenta Solar App 🛒
 Este proyecto fue realizado para enseñar las bases de react en CoderHouse
 ![imageApp](/public/imgReadmi.png)
 ### Instalación ⚙️
